@@ -2,9 +2,10 @@ volumes:
   wordpress:
     driver: local
     driver_opts:
+      type: "bind"
       device: /home/aelbasri/data
+      o: "bind"
     name: wordpress
-    type: "local"
 
   #database:
 
@@ -21,9 +22,8 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress:latest
-    ports: 
-      - "9000"
     build: ./requirements/wordpress/
     volumes:
       - wordpress:/var/www/html/
+
 # db:
