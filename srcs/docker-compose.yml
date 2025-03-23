@@ -1,0 +1,29 @@
+volumes:
+  wordpress:
+    driver: local
+    driver_opts:
+      device: /home/aelbasri/data
+    name: wordpress
+    type: "local"
+
+  #database:
+
+services:
+  web:
+    container_name: my_webserver
+    image: nginx_webserver:latest
+    ports: 
+      - "8080:443"
+    build: ./requirements/nginx/
+    volumes:
+      - wordpress:/var/www/html/
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress:latest
+    ports: 
+      - "9000"
+    build: ./requirements/wordpress/
+    volumes:
+      - wordpress:/var/www/html/
+# db:
