@@ -12,11 +12,13 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 755 /var/www/html
 
-wp core download --allow-root
+su - data-www
+
+wp core download 
 
 cp wp-config-sample.php wp-config.php
 
 wp config create --dbname=$DBNAME --dbuser=$DBUSER --prompt=$DBPASS
-wp db create --allow-root
+wp db create 
 
 php-fpm8.2 -F
