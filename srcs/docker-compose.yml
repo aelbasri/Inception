@@ -12,7 +12,7 @@ volumes:
 services:
   web:
     container_name: my_webserver
-    image: nginx_webserver:latest
+    image: nginx:latest
     ports: 
       - "8080:443"
     build: ./requirements/nginx/

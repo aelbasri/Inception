@@ -5,7 +5,7 @@ run:
 
 clean:
 	docker compose -f ./srcs/docker-compose.yml down
-	docker image rm wordpress:latest nginx_webserver:latest
+	docker image rm wordpress:latest nginx:latest
 rebuild: clean
 	docker compose -f ./srcs/docker-compose.yml build
 
