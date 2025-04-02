@@ -23,6 +23,7 @@ services:
     container_name: wordpress
     image: wordpress:latest
     build: ./requirements/wordpress/
+    env_file: ./.env
     volumes:
       - wordpress:/var/www/html/
 
