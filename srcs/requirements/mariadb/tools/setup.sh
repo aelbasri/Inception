@@ -3,7 +3,7 @@
 sudo mariadb
 CREATE DATABASE $DBNAME;
 CREATE USER "$DBUSER"@'localhost' IDENTIFIED BY "$DBPASS";
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost';
+GRANT ALL PRIVILEGES ON wordpress.* TO "$DBUSER"@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 
