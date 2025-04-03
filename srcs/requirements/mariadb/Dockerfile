@@ -2,7 +2,11 @@ FROM debian:latest
 
 RUN apt update &&\
 	apt install -y mariadb-server
+RUN apt install -y  vim && apt install -y sudo 
 
-RUN apt install -y  vim
+COPY ./tools/setup.sh . 
 
-CMD ["mysqld_safe"]
+RUN chmod +x setup.sh
+
+CMD ["bash", "setup.sh"]
+

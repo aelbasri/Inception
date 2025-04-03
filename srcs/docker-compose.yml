@@ -3,11 +3,17 @@ volumes:
     driver: local
     driver_opts:
       type: "bind"
-      device: /home/aelbasri/data
+      device: /home/aelbasri/data/wodpress_files
       o: "bind"
     name: wordpress
 
-  #database:
+  database:
+    driver: local
+    driver_opts:
+        type: "bind"
+        device:  /home/aelbasri/data/wodpress_database
+        o: "bind"
+    name: database
 
 services:
   web:
@@ -26,5 +32,11 @@ services:
     env_file: ./.env
     volumes:
       - wordpress:/var/www/html/
+  db:
+    container_name: mariadb
+    image: mariadb:latest
+    build: ./requirements/mariadb/
+    env_file: ./.env
+    volume:
+      - database:/var/lib/mysql 
 
-# db:
