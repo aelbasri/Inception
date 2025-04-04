@@ -1,14 +1,19 @@
 #! /bin/bash
 
-echo HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO1
-#mariadbd-safe
-echo HELOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO2
+echo "[mysqld]" >> /etc/mysql/my.cnf
+echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
+echo "[client]" >> /etc/mysql/my.cnf
+echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
 
-mariadb
+(echo "CREATE DATABASE $DBNAME;" && \
+ echo "CREATE USER '$DBUSER'@'localhost' IDENTIFIED BY '$DBPASS';" && \
+ echo "GRANT ALL PRIVILEGES ON $DBNAME.* TO '$DBUSER'@'localhost';" && \
+ echo "FLUSH PRIVILEGES;") | mariadb
 
-echo CREATE DATABASE "$DBNAME";
-echo CREATE USER "$DBUSER"@'localhost' IDENTIFIED BY "$DBPASS";
-echo GRANT ALL PRIVILEGES ON wordpress.* TO "$DBUSER"@'localhost';
-echo FLUSH PRIVILEGES;
-echo EXIT;
+mariadbd-safe
+
+#echo CREATE USER "$DBUSER"@'localhost' IDENTIFIED BY "$DBPASS";
+#echo GRANT ALL PRIVILEGES ON wordpress.* TO "$DBUSER"@'localhost'; 
+#echo FLUSH PRIVILEGES;  
+#echo EXIT;
 
