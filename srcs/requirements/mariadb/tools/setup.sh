@@ -1,9 +1,14 @@
 #! /bin/bash
 
-echo "[mysqld]" >> /etc/mysql/my.cnf
-echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
-echo "[client]" >> /etc/mysql/my.cnf
-echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
+#mysql_secure_installation
+
+systemctl start mariadb
+systemctl enable mariadb
+
+#echo "[mysqld]" >> /etc/mysql/my.cnf
+#echo "socket = /var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
+#echo "[client]" >> /etc/mysql/my.cnf
+#echo "socket = /var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
 
 (echo "CREATE DATABASE $DBNAME;" && \
  echo "CREATE USER '$DBUSER'@'localhost' IDENTIFIED BY '$DBPASS';" && \
