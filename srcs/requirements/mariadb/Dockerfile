@@ -1,7 +1,7 @@
 FROM debian:latest
 
 RUN apt update &&\
-	apt install -y mariadb-server
+	apt install -y mariadb-server 
 RUN apt install -y  vim && apt install -y sudo 
 
 COPY ./tools/setup.sh . 
