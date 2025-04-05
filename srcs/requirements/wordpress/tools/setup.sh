@@ -20,7 +20,7 @@ sudo sed -i "s/database_name_here/$DBNAME/g" wp-config.php
 sudo sed -i "s/username_here/$DBUSER/g" wp-config.php 
 sudo sed -i "s/password_here/$DBPASS/g" wp-config.php 
 
-wp config create --dbname=$DBNAME --dbuser=$DBUSER --prompt=$DBPASS --allow-root 
-wp db create --allow-root
+#wp config create --dbname=$DBNAME --dbuser=$DBUSER --prompt=$DBPASS --allow-root 
+#wp db create --allow-root
 
 php-fpm8.2 -F

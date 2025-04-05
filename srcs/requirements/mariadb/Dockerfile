@@ -1,11 +1,12 @@
 FROM debian:latest
 
 RUN apt update &&\
-    apt install -y mariadb-server 
+    apt-get install -y mariadb-server 
 
-RUN apt install systemd &&\
 RUN apt install -y  vim &&\
     apt install -y sudo 
+
+COPY ./config/debian.cnf /etc/mysql/debian.cnf 
 
 COPY ./tools/setup.sh . 
 
