@@ -1,5 +1,4 @@
 #! /usr/bin/bash
-
 mkdir -p /var/www/html
 
 cd /var/www/html
@@ -19,7 +18,12 @@ cp wp-config-sample.php wp-config.php
 sudo sed -i "s/database_name_here/$DBNAME/g" wp-config.php 
 sudo sed -i "s/username_here/$DBUSER/g" wp-config.php 
 sudo sed -i "s/password_here/$DBPASS/g" wp-config.php 
-
+#sudo sed -i "s/localhost/wordpress/g" wp-config.php 
+sudo sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', 'mariadb:3306' );/g" wp-config.php 
+#sudo sed -i "/define( 'WP_DEBUG', false );/a \
+#	define('WPSITEURL','http://localhost:9000/'); \
+#	define('WPHOME','http://localhost:9000/');" wp-config.php
+sudo sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf
 #wp config create --dbname=$DBNAME --dbuser=$DBUSER --prompt=$DBPASS --allow-root 
 #wp db create --allow-root
 

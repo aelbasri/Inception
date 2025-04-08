@@ -6,12 +6,14 @@ RUN apt update &&\
 RUN apt install -y  vim &&\
     apt install -y sudo 
 
-#COPY ./config/debian.cnf /etc/mysql/debian.cnf 
+COPY ./config/my.cnf /etc/mysql/my.cnf 
 COPY ./config/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf 
 
 COPY ./tools/setup.sh . 
 
 RUN chmod +x setup.sh
+
+#EXPOSE 3306
 
 CMD ["bash", "setup.sh"]
 

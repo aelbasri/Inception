@@ -1,8 +1,14 @@
 FROM debian:latest
 
 RUN apt update &&\
-	apt install -y nginx &&\
-	apt install -y openssl 
+	apt install -y \
+	nginx \
+	openssl \
+	vim \
+	curl \
+	wget \
+	sudo
+
 
 RUN apt install -y  vim 
 

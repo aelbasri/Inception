@@ -20,13 +20,13 @@ services:
     container_name: my_webserver
     image: nginx:latest
     ports: 
-      - "8080:443"
+      - "443:443"
     build: ./requirements/nginx/
     restart: always
     volumes:
       - wordpress:/var/www/html/
     networks:
-      - inception_network
+      - network
 
   wordpress:
     container_name: wordpress
@@ -37,7 +37,7 @@ services:
     volumes:
       - wordpress:/var/www/html/
     networks:
-      - inception_network
+      - network
   db:
     container_name: mariadb
     image: mariadb:latest
@@ -47,7 +47,8 @@ services:
     volumes:
       - database:/var/lib/mysql 
     networks:
-      - inception_network
+      - network
 
 networks:
-  inception_network:
+  network:
+    driver: bridge
