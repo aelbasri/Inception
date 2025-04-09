@@ -12,6 +12,7 @@ sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 755 /var/www/html
 
 wp core download --allow-root
+#wp core config --dbname=$DBNAME --dbuser=$DBUSER --dbpass=$DBPASS --allow-root
 
 cp wp-config-sample.php wp-config.php
 
@@ -20,10 +21,15 @@ sudo sed -i "s/username_here/$DBUSER/g" wp-config.php
 sudo sed -i "s/password_here/$DBPASS/g" wp-config.php 
 #sudo sed -i "s/localhost/wordpress/g" wp-config.php 
 sudo sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', 'mariadb:3306' );/g" wp-config.php 
+sleep 5
+wp core install --skip-email --url='aelbasri.42.fr' --title='Inception' --admin_user='aelbasri' --admin_email='ayoubelbasri313@gmail.com' --admin_password='ayoub123' --allow-root
+
 #sudo sed -i "/define( 'WP_DEBUG', false );/a \
 #	define('WPSITEURL','http://localhost:9000/'); \
 #	define('WPHOME','http://localhost:9000/');" wp-config.php
+#
 sudo sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf
+
 #wp config create --dbname=$DBNAME --dbuser=$DBUSER --prompt=$DBPASS --allow-root 
 #wp db create --allow-root
 
