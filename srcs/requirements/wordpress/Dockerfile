@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:bookworm-backports
 
 RUN apt update && \
     apt install -y \
@@ -20,7 +20,5 @@ RUN sudo apt install -y php-fpm
 COPY ./tools/setup.sh .
 
 RUN chmod +x setup.sh 
-
-#EXPOSE 9000
 
 CMD  ["bash", "setup.sh"]

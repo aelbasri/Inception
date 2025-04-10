@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:bookworm-backports
 
 RUN apt update &&\
 	apt install -y \

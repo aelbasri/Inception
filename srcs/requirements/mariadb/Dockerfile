@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:bookworm-backports
 
 RUN apt update &&\
     apt-get install -y mariadb-server 
@@ -12,8 +12,6 @@ COPY ./config/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./tools/setup.sh . 
 
 RUN chmod +x setup.sh
-
-#EXPOSE 3306
 
 CMD ["bash", "setup.sh"]
 

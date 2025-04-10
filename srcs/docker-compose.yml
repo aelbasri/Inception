@@ -16,12 +16,13 @@ volumes:
     name: database
 
 services:
-  web:
+  nginx:
     container_name: my_webserver
     image: nginx:latest
     ports: 
       - "443:443"
     build: ./requirements/nginx/
+    env_file: ./.env
     restart: always
     volumes:
       - wordpress:/var/www/html/
@@ -38,7 +39,7 @@ services:
       - wordpress:/var/www/html/
     networks:
       - network
-  db:
+  mariadb:
     container_name: mariadb
     image: mariadb:latest
     build: ./requirements/mariadb/
