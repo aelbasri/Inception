@@ -54,6 +54,7 @@ services:
     container_name: redis
     image: redis:1337
     build: ./requirements/bonus/redis
+    env_file: ./.env
     restart: always
     networks:
       - network
