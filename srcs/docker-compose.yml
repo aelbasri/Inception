@@ -17,8 +17,8 @@ volumes:
 
 services:
   nginx:
-    container_name: my_webserver
-    image: nginx:latest
+    container_name: nginx
+    image: nginx:1337
     ports: 
       - "443:443"
     build: ./requirements/nginx/
@@ -31,7 +31,7 @@ services:
 
   wordpress:
     container_name: wordpress
-    image: wordpress:latest
+    image: wordpress:1337
     build: ./requirements/wordpress/
     env_file: ./.env
     restart: always
@@ -41,7 +41,7 @@ services:
       - network
   mariadb:
     container_name: mariadb
-    image: mariadb:latest
+    image: mariadb:1337
     build: ./requirements/mariadb/
     env_file: ./.env
     restart: always
@@ -50,6 +50,13 @@ services:
     networks:
       - network
 
+  redis:
+    container_name: redis
+    image: redis:1337
+    build: ./requirements/bonus/redis
+    restart: always
+    networks:
+      - network
 networks:
   network:
     driver: bridge

@@ -19,8 +19,15 @@ sudo sed -i "s/database_name_here/$DBNAME/g" wp-config.php
 sudo sed -i "s/username_here/$DBUSER/g" wp-config.php 
 sudo sed -i "s/password_here/$DBPASS/g" wp-config.php 
 sudo sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', 'mariadb:3306' );/g" wp-config.php 
+sudo sed -i "/define( 'NONCE_SALT',       'put your unique phrase here' );/a\
+	define('WP_REDIS_HOST', 'redis');\
+	define('WP_REDIS_PORT', 6379);\
+	define('WP_REDIS_ENABLED', true);" wp-config.php 
 sleep 5
+
 wp core install --skip-email --url=$DOMAIN_NAME --title='Inception' --admin_user=$ADMIN_USER  --admin_email=$ADMIN_EMAIL --admin_password=$ADMIN_PASS --allow-root
+
+wp plugin install redis-cache --activate --allow-root
 
 sudo sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf
 

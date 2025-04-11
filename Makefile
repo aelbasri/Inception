@@ -5,7 +5,7 @@ run:
 
 clean:
 	docker compose -f ./srcs/docker-compose.yml -p inception down
-	docker image rm wordpress:latest nginx:latest mariadb:latest
+	docker image rm wordpress:1337 nginx:1337 mariadb:1337 redis:1337
 vclear:
 	sudo rm -rf ~/data/wordpress_database/* ~/data/wordpress_files/*
 
