@@ -27,7 +27,7 @@ services:
     volumes:
       - wordpress:/var/www/html/
     networks:
-      - network
+      - docker-network
 
   wordpress:
     container_name: wordpress
@@ -38,7 +38,7 @@ services:
     volumes:
       - wordpress:/var/www/html/
     networks:
-      - network
+      - docker-network
   mariadb:
     container_name: mariadb
     image: mariadb:1337
@@ -48,7 +48,7 @@ services:
     volumes:
       - database:/var/lib/mysql 
     networks:
-      - network
+      - docker-network
 
   redis:
     container_name: redis
@@ -57,7 +57,20 @@ services:
     env_file: ./.env
     restart: always
     networks:
-      - network
+      - docker-network
+
+  ftp:
+    container_name: ftp
+    image: ftp:1337
+    build: ./requirements/bonus/ftp
+    restart: always
+    ports:
+      - "21:21"
+    volumes:
+      - wordpress:/srv/ftp/user1/ 
+    networks:
+      - docker-network
+
 networks:
-  network:
+  docker-network:
     driver: bridge
