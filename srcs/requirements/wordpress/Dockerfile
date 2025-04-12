@@ -4,6 +4,7 @@ RUN apt update && \
     apt install -y \
     php \
     php-fpm \
+    php-redis \
     php-mysql \
     php-curl \
     php-gd \

@@ -22,8 +22,7 @@ sudo sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', 'mariadb:330
 sudo sed -i "/define( 'NONCE_SALT',       'put your unique phrase here' );/a\
 	define('WP_REDIS_HOST', 'redis');\
 	define('WP_REDIS_PORT', 6379);\
-	define('WP_REDIS_ENABLED', true);\
-	define('WP_REDIS_PASSWORD', '$REDIS_PASS'); " wp-config.php 
+	define('WP_REDIS_ENABLED', true); " wp-config.php 
 sleep 5
 
 wp core install --skip-email --url=$DOMAIN_NAME --title='Inception' --admin_user=$ADMIN_USER  --admin_email=$ADMIN_EMAIL --admin_password=$ADMIN_PASS --allow-root

@@ -9,6 +9,6 @@ RUN apt update && \
 	sudo
 
 RUN sudo sed -i "s/bind 127.0.0.1 -::1/bind wordpress/g" /etc/redis/redis.conf
-RUN sudo echo "requirepass $REDIS_PASS" >> /etc/redis/redis.conf
+RUN sudo sed -i "s/# requirepass foobared/requirepass $REDIS_PASS/g" /etc/redis/redis.conf
 
 CMD ["redis-server", "--protected-mode", "no"] 
