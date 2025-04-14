@@ -28,9 +28,6 @@ wp redis enable --force --allow-root
 sudo chown -R www-data:www-data /var/www/html
 sudo chmod -R 755 /var/www/html
 
-#sudo chown -R www-data:www-data /var/www/html/wp-content
-#sudo chmod -R 755 /var/www/html/wp-content
-
 sudo sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf
 
 
