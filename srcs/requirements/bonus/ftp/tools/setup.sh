@@ -12,6 +12,8 @@ echo "$FTP_USER1_NAME:$FTP_USER1_PASS" | sudo chpasswd
 
 sudo chown -R $FTP_USER1_NAME:$FTP_USER1_NAME $FTP_USER1_DIR
 sudo usermod -d $FTP_USER1_DIR $FTP_USER1_NAME
+#sudo chmod -
+#sudo usermod -a -G 33 ftp_user1
 
 service vsftpd stop
 

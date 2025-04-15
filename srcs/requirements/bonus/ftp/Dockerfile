@@ -11,6 +11,6 @@ RUN apt update && \
 COPY ./tools/setup.sh .
 RUN sudo chmod +x setup.sh
 
-EXPOSE 21
+#EXPOSE 21
 
 CMD ["bash", "setup.sh"] 
