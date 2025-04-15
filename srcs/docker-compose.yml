@@ -1,12 +1,4 @@
 volumes:  
-  portfolio:
-    driver: local
-    driver_opts:
-      type: "bind"
-      device: /home/aelbasri/data/portfolio_files
-      o: "bind"
-    name: portfolio
-
   wordpress:
     driver: local
     driver_opts:
@@ -34,7 +26,6 @@ services:
     restart: always
     volumes:
       - wordpress:/var/www/html/
-      - portfolio:/var/www/html/portfolio
     networks:
       - docker-network
 
@@ -83,11 +74,7 @@ services:
     container_name: portfolio
     image: portfolio:1337
     build: ./requirements/bonus/portfolio
-    entrypoint: /bin/sh
-    stdin_open: true       
     restart: always
-    volumes:
-      - portfolio:/portfolio
     networks:
       - docker-network 
 
