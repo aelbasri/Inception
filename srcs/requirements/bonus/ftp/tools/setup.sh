@@ -10,10 +10,10 @@ sudo sed -i "s/#chroot_local_user=YES/chroot_local_user=YES/g" /etc/vsftpd.conf
 sudo useradd $FTP_USER1_NAME
 echo "$FTP_USER1_NAME:$FTP_USER1_PASS" | sudo chpasswd
 
-sudo chown -R $FTP_USER1_NAME:$FTP_USER1_NAME $FTP_USER1_DIR
-sudo usermod -d $FTP_USER1_DIR $FTP_USER1_NAME
+#sudo usermod -a -G 33 $FTP_USER1_NAME
+sudo chown -R $FTP_USER1_NAME $FTP_USER1_DIR
+sudo usermod -d $FTP_USER1_DIR $FTP_USER1_NAME 
 #sudo chmod -
-#sudo usermod -a -G 33 ftp_user1
 
 service vsftpd stop
 

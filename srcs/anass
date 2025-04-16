@@ -1,0 +1,6 @@
+change debian version //DONE
+check write permission for ftp server into wordpress volume
+adminer need to be checked
+check if you need to expose ftp on 21
+read about expose in dockerfile and ports in docker compose file  
+the different between ENTRYPOINT and CMD

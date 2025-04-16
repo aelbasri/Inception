@@ -78,6 +78,14 @@ services:
     networks:
       - docker-network 
 
+  adminer:
+    container_name: adminer
+    image: adminer:1337
+    build: ./requirements/bonus/adminer
+    restart: always
+    networks:
+      - docker-network 
+
 networks:
   docker-network:
     driver: bridge
