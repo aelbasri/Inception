@@ -4,7 +4,7 @@ create:
 build:
 	docker compose -f ./srcs/docker-compose.yml -p inception build
 run:
-	docker compose -f ./srcs/docker-compose.yml -p inception up -d
+	docker compose -f ./srcs/docker-compose.yml -p inception up
 
 clean:
 	docker compose -f ./srcs/docker-compose.yml -p inception down
