@@ -86,6 +86,14 @@ services:
     networks:
       - docker-network 
 
+  netdata:
+    container_name: netdata
+    image: netdata:1337
+    build: ./requirements/bonus/netdata
+    restart: always
+    networks:
+      - docker-network 
+
 networks:
   docker-network:
     driver: bridge
