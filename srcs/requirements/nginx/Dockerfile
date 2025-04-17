@@ -7,7 +7,8 @@ RUN apt update &&\
 	vim \
 	curl \
 	wget \
-	sudo
+	sudo \
+	ftp #for testing ftp service 
 
 
 RUN apt install -y  vim 
