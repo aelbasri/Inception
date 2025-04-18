@@ -10,6 +10,6 @@ RUN sed -i "s/localhost/portfolio/g" /etc/apache2/sites-available/000-default.co
 
 RUN service apache2 start
 
-COPY ./tools/index.html  ./tools/scripts.js  ./tools/styles.css /var/www/html
+COPY ./tools/index.html  ./tools/script.js  ./tools/styles.css /var/www/html
 
 CMD ["/usr/sbin/apachectl","-DFOREGROUND"]

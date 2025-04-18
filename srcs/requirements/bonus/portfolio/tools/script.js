@@ -208,3 +208,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Add percentages to skill names from progress bar data
+    const progressBars = document.querySelectorAll('.progress-bar');
+    progressBars.forEach(bar => {
+        const percent = bar.getAttribute('data-percent');
+        const skillName = bar.closest('.skill-item').querySelector('.skill-name');
+        skillName.setAttribute('data-percent', percent + '%');
+    });
+});
